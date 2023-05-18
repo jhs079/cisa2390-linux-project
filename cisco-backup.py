@@ -18,7 +18,7 @@ import json
 from netmiko import ConnectHandler
 
 
-def load_device(conf, ip) -> Dict:
+def load_device(conf, ip):
     with open(conf) as f:
         device = json.load(f)
     device["ip"] = ip
