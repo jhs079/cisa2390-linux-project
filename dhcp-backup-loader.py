@@ -16,6 +16,7 @@
 
 from time import sleep
 import subprocess
+import sys
 
 
 class DHCPFallbackController():
@@ -24,8 +25,8 @@ class DHCPFallbackController():
         try:
             status = subprocess.run(disable_dhcp_service_cmd.split())
         except subprocess.CalledProcessError as e:
-            status = e
-        return status.returncode
+            print("Something went wrong")
+            sys.exit()
 
     disable_dhcp_service_cmd = "systemctl stop dhcpd"
     enable_dhcp_service_cmd = "systemctl start dhcpd"
